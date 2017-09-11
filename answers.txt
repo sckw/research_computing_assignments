@@ -49,19 +49,6 @@
 
 8. Compute the total number of earthquakes in each country and then display the top ten countries along with the number of earthquakes. Hint: this can be done with a command sequence similar to exercise 5, but requires a specific argument to be used with uniq.
 
-  !!!!VAGUE QUESTION, "top ten" of default order, or "top ten" when sorted by number of earthquakes?!!!!
-  $ cut -f 3 Year_Mag_Country.tsv | sort | uniq -c | head
-     56 AFGHANISTAN
-     53 ALBANIA
-     55 ALGERIA
-      4 ANTARCTICA
-      3 ANTIGUA AND BARBUDA
-     20 ARGENTINA
-     13 ARMENIA
-      5 ATLANTIC OCEAN
-     23 AUSTRALIA
-      7 AUSTRIA
-
   $ cut -f 3 Year_Mag_Country.tsv | sort | uniq -c | sort -n -r | head
     579 CHINA
     400 JAPAN
@@ -77,13 +64,12 @@
 9. Create a shell script named countEq.sh that returns the total number of earthquakes for a given country, where the country is specified as the option when calling the script. Hint: see the Shell Script notes and use the special variable $1. Paste your script below and give an example calling sequence for country USA.
 
   $ vi countEq.sh
-
   ***countEq.sh script below***
   #Type country name in quotation marks.
   cut -f 3 Year_Mag_Country.tsv | sort | uniq -c | grep -w -i "$1"
   *****************************
 
-  $bash countEq.sh USA
+  $bash countEq.sh "USA"
     255 USA
      39 USA TERRITORY
 
