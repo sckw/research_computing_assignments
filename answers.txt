@@ -61,8 +61,10 @@
     $ vi countEq.sh
 
     ***countEq.sh script below***
+
     #Type country name in quotation marks.
     cut -f 3 Year_Mag_Country.tsv | sort | uniq -c | grep -w -i "$1"
+
     *****************************
 
     $bash countEq.sh USA
@@ -72,9 +74,11 @@
 10. Create a shell script named countEq_getLargestEq.sh that returns both the total number of earthquakes AND the largest earthquake for a given country, where the country is specified as the option when calling the script. Use the echo command before each command to create labels for each returned value. Paste your script below and give an example calling sequence for country CHILE.
 
     ***countEq_getLargestEq.sh script below***
+
     echo Total number of earthquakes in "$1": $(cut -f 3 Year_Mag_Country.tsv | sort | uniq -c | grep -w -i "$1")
     echo Largest earthquake magnitude in "$1": $(cut -f 2,3 Year_Mag_Country.tsv | grep -w -i "$1" | sort -n -r | head -n 1 | cut -f 1)
     echo Year of largest earthquake in "$1": $(cut -f 1,2,3 Year_Mag_Country.tsv | grep -w -i "$1" | sort -n -r | head -n 1 | cut -f 1)
+
     ******************************************
 
     $ bash countEq_getLargestEq.sh Chile
@@ -100,12 +104,27 @@
 12. Create a shell script that loops over the top ten years with the most earthquakes (from exercise 11), finds all the earthquakes for a given year and writes them to file named $YEAR-earthquakes.txt, where $YEAR is the for loop variable assigned from the top ten list. You code should output ten different files (one for each year in the top ten list). Hints: Take your answer from exercise 11 and extract the year column, then use this for the range in a for loop by inserting them like this for YEAR in $(insert code that lists top ten years here). The rest is just a grep and a redirect > to a file with the correct name.
 
     #Outputs Year, Magnitude and Country of all earthquakes in YEAR.
-    *******SCRIPT below*********
+    *******year.sh SCRIPT below*********
+
     for YEAR in $(cut -f 1 Year_Mag_Country.tsv | uniq -c | sort -nr | head | cut -b 9-12)
     do
-      grep -w "$YEAR" Year_Mag_Country.tsv > $YEAR-earthquakes.txt
+    	grep -w "$YEAR" Year_Mag_Country.tsv > $YEAR-earthquakes.txt
+	echo $YEAR-earthquakes.txt
     done
+
     ****************************
-    10 output files
+    $ bash year.sh
+    2004-earthquakes.txt
+    2008-earthquakes.txt
+    2003-earthquakes.txt
+    2007-earthquakes.txt
+    2010-earthquakes.txt
+    2006-earthquakes.txt
+    2009-earthquakes.txt
+    2005-earthquakes.txt
+    2002-earthquakes.txt
+    2011-earthquakes.txt
+    
+    Outputs 10 files
 
 13. Turn in your homework by sharing it with us on a GitHub repository. Instructions: on GitHub, create a private git repository called Assignment_2. Share this repository with users kerrykey and rabernat. Clone the repository to your laptop. Save your answers to the exercises above in a text file called answers.txt. Use git to commit answers.txt to your repository on your laptop, and then push the changes to the remote repository on GitHub.
