@@ -269,7 +269,7 @@ set(gca,'YLim',[min(frequencies) max(frequencies)]);
 set(h,'LineStyle','None');
 set(gca,'Layer','top');
 shading(gca,'interp');
-caxis([-25 -17])
+caxis([-24 -16])
 xlabel('Time (minutes)');
 ylabel('Frequency (Hz)');
 H.Label.String = 'log_{10}(Power spectral density) (T^{2}Hz^{-1})';
