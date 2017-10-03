@@ -1,0 +1,48 @@
+Matrix Multiplication. In this example you will use Fortran to create two square matrices A and B with dimensions n x n. You will then use matrix multiplication to compute their product with the results being stored in matrix C. Thus, you will be computing the matrix equation C = AB. Note that matrix multiplication is different from element by element array multiplication. See the wikipedia page if you are unsure what matrix multiplication is.
+
+1a) How many megabytes of RAM will be required to store matrices A,B and C in the computer's memory for a given matrix size n? State the formula.
+
+	n*n*8/(10^6) MB
+
+1b) Element C(i,j) is equal to the sum of A(i,k)*B(k,j) over all values of index k from 1 to n. How many multiplication operations does it take to compute the single element C(i,j)? How many addition operations does it take to compute the single element C(i,j)?
+
+	n multiplication operations for C(i,j)
+	n-1 addition operations for C(i,j)
+
+1c) Write down the code snippet for computing element C(i,j) using a do loop. Assume i and j are given fixed values so you don't need to loop over i or j here.
+
+	do k = 1,n
+		C(i,j) = C(i,j) + A(i,k)*B(k,j)
+	end do
+
+1d) State the code for computing element C(i,j) where you use the intrinsic function sum instead of a do loop.
+
+	C(i,j) = sum(A(i,:)*B(:,j))
+
+1e) Now state the code snippet for computing every element in matrix C using your answer from 1c) or 1d) as a starting point. You don't need to write down the entire Fortran program. Just state the part that performs the matrix product C = AB.
+
+	do i = 1,n
+		do j = 1,n
+			C(i,j) = sum(A(i,:)*B(:,j))
+		end do
+	end do
+	
+1f) How many total operations does it take to compute the matrix product C = AB? State your answer as a single formula in terms of n.
+	
+	n*n*(2*n-1)
+	
+1g) Simplify your result from 1f) by stating it using big-O notation. In big-O notation you just state the dominant term and ignore any constants. Write your answer as O(X), where X is the dominant term.
+
+	O(n^3)
+
+1h) Big-O notation is used to classify the performance of an algorithm as a function of the size of the input n. Assume your matrix product algorithm will take time t0 to run on your computer when n=1. How long should it them take for n=10,n=100,n=1000?
+
+	n=1		t0
+	n=10	10^3*t0
+	n=100   100^3*t0
+	n=1000	1000^3*t0
+
+1i ) If all elements of A and B to have the value 1, what value should any element of C be?
+
+	n	
+	

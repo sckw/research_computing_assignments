@@ -1,0 +1,7 @@
+3c)
+
+For n = 10000, computation time = 3609 seconds
+For n = 100000, computation time = 3609375 seconds or 1 hour
+
+10000*10000*8 bytes = 800 MB
+100000*100000*8 bytes = 80 GB
