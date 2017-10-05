@@ -1,7 +1,11 @@
 3c)
+Used the relation between n and time derived with the big-O scaling in part 1:
+	dt = t0(n=1000)/n^3
+	dt = 3.6093750000000000/1000^3
+	So, (n^3)*dt = computation time for size n
 
 For n = 10000, computation time = 3609 seconds
-For n = 100000, computation time = 3609375 seconds or 1 hour
+For n = 100000, computation time = 3609375 seconds or approx. 1 hour
 
 10000*10000*8 bytes = 800 MB
 100000*100000*8 bytes = 80 GB
